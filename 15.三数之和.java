@@ -33,33 +33,28 @@ import java.util.List;
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        List<List<Integer>> allList = new ArrayList<>();
-        for(int i = nums.length-1;i>=2;i--){
-            for(int j = i-1,k=0;k<j;){
-                int sum = nums[j] + nums[k];
-                if(sum > -nums[i]){     
-                    --j;
-                }else if(sum < -nums[i]){
-                    ++k;
-                }else{
-                    List<Integer> list = new ArrayList<>();
-                    list.add(nums[k]);
-                    list.add(nums[j]);
-                    list.add(nums[i]);
-                    allList.add(list);
-                    do{//重复项去掉
-                        ++k;
-                    } while (k < j && nums[j-1] == nums[j]);
-                    do{
-                        --j;
-                    } while (k < j && nums[k+1] == nums[k]);
+        List<List<Integer>> ls = new ArrayList<>();
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {  // 跳过可能重复的答案
+                int l = i + 1, r = nums.length - 1, sum = 0 - nums[i];
+                while (l < r) {
+                    if (nums[l] + nums[r] == sum) {
+                        ls.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                        while (l < r && nums[l] == nums[l + 1]) l++;
+                        while (l < r && nums[r] == nums[r - 1]) r--;
+                        l++;
+                        r--;
+                    } else if (nums[l] + nums[r] < sum) {
+                        while (l < r && nums[l] == nums[l + 1]) l++;   // 跳过重复值
+                        l++;
+                    } else {
+                        while (l < r && nums[r] == nums[r - 1]) r--;
+                        r--;
+                    }
                 }
             }
-            do{//重复项去掉
-                --i;
-            } while (i >= 2 && nums[i+1] == nums[i]);
         }
-        return allList;
+        return ls;
     }
 }
 
