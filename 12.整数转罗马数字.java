@@ -142,8 +142,7 @@ class Solution {
             } else {
                 return "";
             }
-        } 
+        }
         return "";
     }
 }
-

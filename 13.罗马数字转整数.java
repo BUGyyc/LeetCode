@@ -67,7 +67,35 @@
  */
 class Solution {
     public int romanToInt(String s) {
-        
+        int sum = 0;
+        String[] special = new String[] { "IV", "IX", "XL", "XC", "CD", "CM" };
+        int[] svalue = new int[] { 4, 9, 40, 90, 400, 900 };
+        String[] normal = new String[] { "I", "V", "X", "L", "C", "D", "M" };
+        int[] nvalue = new int[] { 1, 5, 10, 50, 100, 500, 1000 };
+        Map<String, Integer> map1 = new HashMap<>();
+        Map<String, Integer> map2 = new HashMap<>();
+        for (int i = 0; i < normal.length; i++) {
+            map2.put(normal[i], nvalue[i]);
+        }
+        for (int i = 0; i < special.length; i++) {
+            map1.put(special[i], svalue[i]);
+        }
+        char[] S = s.toCharArray();
+        for (int i = 1; i < S.length; i++) {
+            String temp = String.valueOf("" + S[i - 1] + S[i]);
+            if (map1.containsKey(temp)) {
+                sum += map1.get(temp);
+                S[i] = 0;
+                S[i - 1] = 0;
+            } else {
+                if (S[i - 1] != 0) {
+                    sum += map2.get("" + S[i - 1]);
+                }
+            }
+        }
+        if (S[S.length - 1] != 0) {
+            sum += map2.get("" + S[S.length - 1]);
+        }
+        return sum;
     }
 }
-
