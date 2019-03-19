@@ -40,7 +40,14 @@
  */
 class Solution {
     public boolean isPalindrome(int x) {
-        
+        if (x < 0 || x != 0 && x % 10 == 0) {// 小于0肯定不是,除了0之外，被10整除肯定也不是
+            return false;
+        }
+        int newNum = 0;
+        while (x > newNum) {
+            newNum = newNum * 10 + x % 10;// 把这个数颠倒，最后用来比较x
+            x = x / 10;
+        }
+        return x == newNum || x == newNum / 10;
     }
 }
-

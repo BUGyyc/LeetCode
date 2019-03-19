@@ -30,12 +30,12 @@ class Solution {
         int[] arr=new int[2];
         for(int i=0;i<nums.length;i++){
             int x=nums[i];
-            if(map.get(x)!=null){//避免重复
+            if(map.get(x)!=null){//直接找 目标差值 （target-x）
                 arr[1]=i;
                 arr[0]=map.get(nums[i]);
                 return arr;
             }else{
-                map.put((target-x), i);
+                map.put((target-x), i);//存索引
             }
         }
         return null;
