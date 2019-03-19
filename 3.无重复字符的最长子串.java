@@ -37,8 +37,28 @@
  * 
  */
 class Solution {
+    //TODO:
     public int lengthOfLongestSubstring(String s) {
-        
+        String temp = "";// 临时存放的字符串
+        String list = "";// 每个阶段最长的连续字串
+        for (int i = 0; i < s.length(); i++) {
+            /*
+             * 如果在临时字符串中存在，将出现那个位置之前的字符都删除。
+             */
+            if (temp.contains(s.charAt(i) + "")) {
+                int t = temp.indexOf(s.charAt(i));
+                if ((t + 1) == temp.length())
+                    temp = "";
+                else
+                    temp = temp.substring(t + 1, temp.length());
+                temp = temp.concat(s.charAt(i) + "");
+            } else {
+                temp = temp.concat(s.charAt(i) + "");//无重复就加进去
+            }
+            if (list.length() <= temp.length()) {// 如果找到一个比现在的长的子串，置换
+                list = temp;
+            }
+        }
+        return list.length();
     }
 }
-

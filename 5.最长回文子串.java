@@ -28,8 +28,33 @@
  * 
  */
 class Solution {
+    //TODO:
     public String longestPalindrome(String s) {
-        
+        String longestPalindrome = "";
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length - longestPalindrome.length(); i++) {
+            for (int j = chars.length - 1; j >= i; j--) {
+                // 从后往前找
+                if (chars[j] == chars[i]) {
+                    // 判断是不是回文
+                    for (int k = i; k <= j; k++) {
+                        if (chars[k] != chars[j + i - k]) {
+                            break;
+                        }
+                        // 判断一半是不是对了
+                        if (k >= j + i - k) {
+                            if (longestPalindrome.length() < (k - i + 1)) {// 判断是不是比上一个长
+                                char[] bs = new char[k - i + 1];
+                                System.arraycopy(chars, i, bs, 0, k - i + 1);
+                                // 保存长的
+                                longestPalindrome = String.valueOf(bs);
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        return longestPalindrome;
     }
 }
-
