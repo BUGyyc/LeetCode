@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /*
  * @lc app=leetcode.cn id=18 lang=java
  *
@@ -33,7 +36,46 @@
  */
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        
+        List<List<Integer>> allList = new ArrayList<>();
+        if (nums.length == 0)
+            return allList;
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;// 去掉重复的
+            int newTarget = target - nums[i];
+            for (int x = i + 1; x < nums.length; x++) {
+                if (x > i + 1 && nums[x] == nums[x - 1])
+                    continue;
+                int newTarget2 = newTarget - nums[x];
+                int f = x + 1;
+                int e = nums.length - 1;
+                while (f < e) {
+                    if (newTarget2 == nums[f] + nums[e]) {
+                        List<Integer> list = new ArrayList<>();
+                        list.add(nums[i]);
+                        list.add(nums[x]);
+                        list.add(nums[f]);
+                        list.add(nums[e]);
+                        allList.add(list);
+                        while (f < e && nums[f] == nums[f + 1])
+                            ++f; // 注意去重
+                        while (f < e && nums[e] == nums[e - 1])
+                            --e;
+                        f++;
+                        e--;
+                    } else if (newTarget2 < nums[f] + nums[e]) {
+                        // while (f < e && nums[e] == nums[e - 1])
+                        //     e--;
+                        e--;
+                    } else if (newTarget2 > nums[f] + nums[e]) {
+                        // while (f < e && nums[f] == nums[f + 1])
+                        //     f++;
+                        f++;
+                    }
+                }
+            }
+        }
+        return allList;
     }
 }
-
