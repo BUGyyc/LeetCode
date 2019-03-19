@@ -28,6 +28,7 @@ class Solution {
     /**
      * target - x 目标差值
      * 若存在，说明有解
+     * 关键在map.get(x)、map.put((target-x), i)
      */
     public int[] twoSum(int[] nums, int target) {
         Map<Integer,Integer> map=new HashMap<>();
