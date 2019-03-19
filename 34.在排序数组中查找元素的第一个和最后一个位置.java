@@ -30,27 +30,69 @@
  */
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int[] rArr = new int[2];
-        rArr[0] = -1;
-        rArr[1] = -1;
-        return search(nums, 0, nums.length - 1, target, rArr);
+        int[] result = {-1, -1};
+        if(nums == null){
+            return result;
+        }
+        result[0] = binarySearch(nums, target, true);
+        result[1] = binarySearch(nums, target, false);
+        return result;
     }
-    //TODO:
-    // 二分法查找
-    private int[] search(int[] nums, int f, int e, int target, int[] rArr) {
-        if (f > e) {
-            return rArr;
+    public int binarySearch(int[] nums, int target, boolean b){
+        int low = 0;
+        int high = nums.length - 1;
+        int middle;
+        while(low <= high){
+            middle = low + (high - low) / 2;
+            if(nums[middle] == target){
+                if(b){//找最小的下标
+                    if(middle > 0 && nums[middle - 1] == target){
+                        high = middle - 1;
+                    }
+                    else{
+                        return middle;
+                    }
+                }
+                else{//找最大的下标
+                    if(middle < nums.length - 1 && nums[middle + 1] == target){
+                        low = middle + 1;
+                    }
+                    else{
+                        return middle;
+                    }
+                }
+            }
+            else if(nums[middle] < target){
+                low = middle + 1;
+            }
+            else{
+                high = middle - 1;
+            }
         }
-        int mid = (f + e) / 2;
-        if (target == nums[mid]) {// 找到了
-            rArr[0] = mid;
-            rArr[1] = mid + 1;
-            return rArr;
-        } else if (target > nums[mid]) {
-            return search(nums, mid + 1, e, target, rArr);
-        } else {
-            return search(nums, f, mid - 1, target, rArr);
-        }
+        return -1;
+    }
+    // public int[] searchRange(int[] nums, int target) {
+    //     int[] rArr = new int[2];
+    //     rArr[0] = -1;
+    //     rArr[1] = -1;
+    //     return search(nums, 0, nums.length - 1, target, rArr);
+    // }
+    // //TODO:
+    // // 二分法查找
+    // private int[] search(int[] nums, int f, int e, int target, int[] rArr) {
+    //     if (f > e) {
+    //         return rArr;
+    //     }
+    //     int mid = (f + e) / 2;
+    //     if (target == nums[mid]) {// 找到了
+    //         rArr[0] = mid;
+    //         rArr[1] = mid + 1;
+    //         return rArr;
+    //     } else if (target > nums[mid]) {
+    //         return search(nums, mid + 1, e, target, rArr);
+    //     } else {
+    //         return search(nums, f, mid - 1, target, rArr);
+    //     }
 
-    }
+    // }
 }

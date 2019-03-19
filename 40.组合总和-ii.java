@@ -46,7 +46,35 @@
  */
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        
+        if(candidates == null){
+            return ll;
+        }
+        Arrays.sort(candidates);
+        backTracking(candidates, target, 0, 0);
+        return ll;
+    }
+    List<List<Integer>> ll = new ArrayList<>();
+    List<Integer> l = new ArrayList<>();
+    public void backTracking(int[] c, int t, int s, int j){
+        if(s >= t){
+            if(s == t){
+                if(ll.contains(l)){
+                    return ;
+                }
+                ll.add(l);
+                List<Integer> l1 = new ArrayList<>();
+                for(int i : l){
+                    l1.add(i);
+                }
+                l = l1;
+            }
+        }else{
+            for(int i = j;i < c.length;i ++){
+                l.add(c[i]);
+                backTracking(c, t, s + c[i], i + 1);
+                l.remove(l.size() - 1);
+            }
+        }
     }
 }
 
