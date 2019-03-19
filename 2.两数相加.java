@@ -36,8 +36,8 @@ class Solution {
         if (l1 == null || l2 == null)
             return l1 == null ? l2 : l1;
         int carry = 0;
-        ListNode listNode = new ListNode(-1);
-        ListNode head = listNode;//头结点指向
+        ListNode listNode = new ListNode(-1);//创建一个空节点
+        ListNode head = listNode;//头结点指向一个空节点
         while (l1 != null || l2 != null) {
             int sum = carry;
             carry = 0;
@@ -49,12 +49,12 @@ class Solution {
                 sum += l2.val;
                 l2 = l2.next;
             }
-            int newVal = sum;
+            int newVal = sum;//进位值与 l1、l2的值得和
             if (sum >= 10) {
                 carry = 1;// 进位
                 newVal = sum % 10;// 取余数
             }
-            listNode.next = new ListNode(newVal);
+            listNode.next = new ListNode(newVal);//指向下一个节点，这个节点就是求和进位后的值
             listNode = listNode.next;
         }
         if (carry > 0) {
