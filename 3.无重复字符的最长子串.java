@@ -47,10 +47,10 @@ class Solution {
              */
             if (temp.contains(s.charAt(i) + "")) {
                 int t = temp.indexOf(s.charAt(i));
-                if ((t + 1) == temp.length())
+                if ((t + 1) == temp.length())//尾部的情况，所以直接重置
                     temp = "";
                 else
-                    temp = temp.substring(t + 1, temp.length());
+                    temp = temp.substring(t + 1, temp.length());//丢弃之前的内容，取重复的之后的内容
                 temp = temp.concat(s.charAt(i) + "");
             } else {
                 temp = temp.concat(s.charAt(i) + "");//无重复就加进去
