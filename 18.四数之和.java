@@ -35,6 +35,7 @@ import java.util.Arrays;
  * 
  */
 class Solution {
+    //TODO:
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> allList = new ArrayList<>();
         if (nums.length == 0)
@@ -66,11 +67,11 @@ class Solution {
                         e--;
                     } else if (newTarget2 < nums[f] + nums[e]) {
                         // while (f < e && nums[e] == nums[e - 1])
-                        //     e--;
+                        // e--;
                         e--;
                     } else if (newTarget2 > nums[f] + nums[e]) {
                         // while (f < e && nums[f] == nums[f + 1])
-                        //     f++;
+                        // f++;
                         f++;
                     }
                 }

@@ -42,12 +42,11 @@
  */
 class Solution {
     public int searchInsert(int[] nums, int target) {
-        for(int i = 0;i<nums.length;i++){
-            if(nums[i]>= target){
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= target) {
                 return i;
             }
         }
-        return (nums[nums.length-1] >= target)?nums.length-1:nums.length;
+        return (nums[nums.length - 1] >= target) ? nums.length - 1 : nums.length;
     }
 }
-

@@ -35,21 +35,21 @@ class Solution {
         rArr[1] = -1;
         return search(nums, 0, nums.length - 1, target, rArr);
     }
-
-    //二分法查找
-    private int[] search(int[] nums, int f, int e, int target,int[] rArr) {
+    //TODO:
+    // 二分法查找
+    private int[] search(int[] nums, int f, int e, int target, int[] rArr) {
         if (f > e) {
             return rArr;
         }
         int mid = (f + e) / 2;
-        if(target == nums[mid]){//找到了
+        if (target == nums[mid]) {// 找到了
             rArr[0] = mid;
-            rArr[1] = mid +1;
+            rArr[1] = mid + 1;
             return rArr;
-        }else if(target > nums[mid]){
-            return search(nums, mid+1, e, target,rArr);
-        }else{
-            return search(nums, f, mid-1, target,rArr);
+        } else if (target > nums[mid]) {
+            return search(nums, mid + 1, e, target, rArr);
+        } else {
+            return search(nums, f, mid - 1, target, rArr);
         }
 
     }

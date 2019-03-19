@@ -21,30 +21,31 @@
  * 
  */
 class Solution {
+    //TODO:
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int minSum = nums[0] + nums[1] + nums[2];
         for (int i = 0; i < nums.length - 2; i++) {
             // if (i == 0 || i > 0 && nums[i] == nums[i + 1]) {// 重复不需要判断
-                int f = i + 1;// 头
-                int e = nums.length - 1;// 尾
-                while (f < e) {
-                    int sum = nums[i] + nums[f] + nums[e];
-                    if(Math.abs(sum - target) < Math.abs(minSum - target)){
-                        minSum = sum;
-                    }
-                    if(sum > target){
-                        // while(e > f && nums[e] == nums[e-1])//去除重复
-                        //     e--;
-                        e--;
-                    }else if(sum < target){
-                        // while(e > f && nums[f] == nums[f+1])//除去重复
-                        //     f++;
-                        f++;
-                    }else{
-                        return target;//等于目标值了
-                    }
+            int f = i + 1;// 头
+            int e = nums.length - 1;// 尾
+            while (f < e) {
+                int sum = nums[i] + nums[f] + nums[e];
+                if (Math.abs(sum - target) < Math.abs(minSum - target)) {
+                    minSum = sum;
                 }
+                if (sum > target) {
+                    // while(e > f && nums[e] == nums[e-1])//去除重复
+                    // e--;
+                    e--;
+                } else if (sum < target) {
+                    // while(e > f && nums[f] == nums[f+1])//除去重复
+                    // f++;
+                    f++;
+                } else {
+                    return target;// 等于目标值了
+                }
+            }
             // }
         }
         return minSum;
