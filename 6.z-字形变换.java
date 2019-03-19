@@ -46,7 +46,26 @@
  */
 class Solution {
     public String convert(String s, int numRows) {
-        
+        if (numRows == 1)
+            return s;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int q = 1; q <= numRows; q++) {
+            int n = 0;
+            int next = q;
+            int pre = 0;
+            while (next <= s.length()) {
+                if (pre != next) {
+                    stringBuilder.append(s.charAt(next - 1));
+                }
+                pre = next;
+                if (n % 2 == 0) {
+                    next = (numRows - q) * 2 + next;
+                } else {
+                    next = (q - 1) * 2 + next;
+                }
+                n++;
+            }
+        }
+        return stringBuilder.toString();
     }
 }
-
