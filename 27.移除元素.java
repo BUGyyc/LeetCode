@@ -57,6 +57,9 @@
  * 
  */
 class Solution {
+    /**
+     * 同上一题类似，控制J的增长
+     */
     public int removeElement(int[] nums, int val) {
         int j = 0;
         for(int i = 0;i<nums.length;i++){

@@ -52,6 +52,9 @@
  * 
  */
 class Solution {
+    /**
+     * 不相等判断，控制j的增长
+     */
     public int removeDuplicates(int[] nums) {
         int j = 0;
         for (int i = 1; i < nums.length; i++) {
