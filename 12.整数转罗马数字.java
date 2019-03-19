@@ -67,7 +67,83 @@
  */
 class Solution {
     public String intToRoman(int num) {
-        
+        String numStr = num + "";
+        String[] nums = new String[numStr.length()];
+        for (int i = numStr.length() - 1, j = 1; num > 0; i--, j++) {
+            nums[i] = convertRoman(num % 10, j);
+            num = num / 10;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < nums.length; i++) {
+            sb.append(nums[i]);
+        }
+        return sb.toString();
+    }
+
+    public String convertRoman(int n, int index) {
+        StringBuilder sb = new StringBuilder();
+        if (index == 1) {
+            if (n < 4) {
+                for (int i = 0; i < n; i++) {
+                    sb.append("I");
+                }
+                return sb.toString();
+            } else if (n == 4) {
+                return "IV";
+            } else if (n < 9) {
+                sb.append("V");
+                for (int i = 5; i < n; i++) {
+                    sb.append("I");
+                }
+                return sb.toString();
+            } else if (n == 9) {
+                return "IX";
+            }
+        } else if (index == 2) {
+            if (n < 4) {
+                for (int i = 0; i < n; i++) {
+                    sb.append("X");
+                }
+                return sb.toString();
+            } else if (n == 4) {
+                return "XL";
+            } else if (n < 9) {
+                sb.append("L");
+                for (int i = 5; i < n; i++) {
+                    sb.append("X");
+                }
+                return sb.toString();
+            } else if (n == 9) {
+                return "XC";
+            }
+        } else if (index == 3) {
+            if (n < 4) {
+                for (int i = 0; i < n; i++) {
+                    sb.append("C");
+                }
+                return sb.toString();
+            } else if (n == 4) {
+                return "CD";
+            } else if (n < 9) {
+                sb.append("D");
+                for (int i = 5; i < n; i++) {
+                    sb.append("C");
+                }
+                return sb.toString();
+            } else if (n == 9) {
+                return "CM";
+            }
+        } else if (index == 4) {
+            if (n < 4) {
+                for (int i = 0; i < n; i++) {
+                    sb.append("M");
+                }
+                return sb.toString();
+            } else {
+                return "";
+            }
+        } 
+        return "";
     }
 }
 

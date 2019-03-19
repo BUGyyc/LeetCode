@@ -30,7 +30,18 @@
  */
 class Solution {
     public int maxArea(int[] height) {
-        
+        int f = 0;
+        int e = height.length - 1;
+        int max = 0;
+        while (f < e) {
+            int mj = Math.min(height[f], height[e])*(e - f);
+            max = Math.max(max, mj);// 记录最大值
+            if (height[f] < height[e]) {
+                f++;
+            } else {
+                e--;
+            }
+        }
+        return max;
     }
 }
-
