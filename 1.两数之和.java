@@ -25,6 +25,10 @@
  * 
  */
 class Solution {
+    /**
+     * target - x 目标差值
+     * 若存在，说明有解
+     */
     public int[] twoSum(int[] nums, int target) {
         Map<Integer,Integer> map=new HashMap<>();
         int[] arr=new int[2];
