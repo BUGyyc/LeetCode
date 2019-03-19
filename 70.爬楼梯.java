@@ -38,7 +38,28 @@
  */
 class Solution {
     public int climbStairs(int n) {
+        // return fbFunc(n);
+
+        //使用带缓存的递归
+        if(n==1||n==2){return n;}
+        int[] cache = new int[n+1];
+        cache[0] = 1;
+        cache[1] = 1;
         
+        for(int i=2;i<=n;i++){
+            cache[i] = cache[i-1] +cache[i-2];
+        }
+        return cache[n];
+    }
+
+    private int fbFunc(int x){
+        if(x == 1){
+            return 1;
+        }else if(x == 2){
+            return 2;
+        }else{
+            return fbFunc(x-1)+fbFunc(x-2);
+        }
     }
 }
 

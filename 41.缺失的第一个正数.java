@@ -37,8 +37,28 @@
  * 
  */
 class Solution {
+    /**
+     * 遍历一次数组把大于等于1的和小于数组大小的值放到原数组对应位置，
+     * 然后再遍历一次数组查当前下标是否和值对应，如果不对应那这个下标就是答案，否则遍历完都没出现那么答案就是数组长度加1。
+     */
     public int firstMissingPositive(int[] nums) {
-        
+        int[] temp = new int[nums.length];
+        System.arraycopy(nums, 0, temp, 0, nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= 1 && nums[i] <= nums.length) {
+                temp[nums[i] - 1] = nums[i];
+            }
+        }
+
+        int i;
+        //这个for循环就是从小到大遍历，所以可以直接找到最小正整数
+        for (i = 0; i < nums.length; i++) {
+            if (temp[i] != (i + 1)) {//如果不存在
+                break;
+            }
+        }
+
+        return i + 1;
     }
 }
 

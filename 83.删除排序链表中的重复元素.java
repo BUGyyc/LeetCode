@@ -26,16 +26,19 @@
  * 
  */
 /**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+ * Definition for singly-linked list. public class ListNode { int val; ListNode
+ * next; ListNode(int x) { val = x; } }
  */
 class Solution {
+    /**
+     * 排序链表，说明有顺序，只有相邻才需要比较
+     */
     public ListNode deleteDuplicates(ListNode head) {
-        
+        if(head == null || head.next == null){
+            return head;
+        }
+        head.next = deleteDuplicates(head.next);
+        if(head.val == head.next.val) head = head.next;
+        return head;
     }
 }
-
