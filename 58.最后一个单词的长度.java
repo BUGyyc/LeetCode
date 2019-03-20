@@ -26,7 +26,20 @@
  */
 class Solution {
     public int lengthOfLastWord(String s) {
-        
+        StringBuilder sb = new StringBuilder(s);
+        s = sb.reverse().toString();
+        char[] cs = s.toCharArray();
+        boolean start = false;
+        int j = 0;
+        int i = 0;
+        for (i = 0; i < cs.length; i++) {
+            if (start == false && cs[i] != ' ') {
+                start = true;
+                j = i;
+            } else if (start == true && cs[i] == ' ') {
+                return i - j;
+            }
+        }
+        return (start)?i - j:0;
     }
 }
-
