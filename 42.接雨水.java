@@ -25,8 +25,32 @@
  * 
  */
 class Solution {
+    //TODO:
     public int trap(int[] height) {
-        
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+        Stack<Integer> stack = new Stack<>();
+        int result = 0;
+        stack.push(0);
+        for (int i = 1; i < height.length; i++) {
+            //如果当前值大于栈顶值，需要弹出栈顶的值，并在弹出的时候执行计算雨水的逻辑
+            if (height[i] >= height[stack.peek()]) {
+                int bottom = height[stack.pop()];
+                //当前栈有元素，且当前值，大于bottom后面的值
+                while (!stack.isEmpty() && height[i] >= height[stack.peek()]) {
+                    int leftEdge = stack.pop();
+                    result += (height[leftEdge] - bottom) * (i - leftEdge - 1);
+                    bottom = height[leftEdge];//将bottom移动到左边的边界处
+                }
+                //上面的while循环跑完后，判断栈顶的值比当前值大的话，进下面的逻辑
+                if (!stack.isEmpty() && height[i] < height[stack.peek()]) {
+                    result += (height[i] - bottom) * (i - stack.peek() - 1);
+                }
+            }
+            stack.push(i);
+        }
+        return result;
     }
 }
 
