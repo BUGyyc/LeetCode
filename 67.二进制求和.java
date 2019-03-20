@@ -28,31 +28,17 @@
  */
 class Solution {
     public String addBinary(String a, String b) {
-        StringBuilder builder = new StringBuilder(a); 
-        a = builder.reverse().toString();//反转
-        builder = new StringBuilder(b); 
-        b = builder.reverse().toString();//反转
-        char[] aArr = a.toCharArray();
-        char[] bArr = b.toCharArray();
+        StringBuilder res = new StringBuilder();
         int carry = 0;
-        int max = Math.max(aArr.length, bArr.length);
-        int[] newArr = new int[max];
-        int i = 0;
-        while (i < max) {
-            int x = (i < aArr.length)?Integer.parseInt(String.valueOf(aArr[i])):0;
-            int y = (i < bArr.length)?Integer.parseInt(String.valueOf(bArr[i])):0;
-            if(x + y + carry > 1){//有进位
-                carry = 1;
-                newArr[i] = 0;
-            }else{
-                newArr[i] = x + y + carry;
-                carry = 0;//重置
-            }
-            i++;
+        int m = a.length() - 1, n = b.length() - 1;
+        while(m >= 0 || n >= 0){
+            int temp = carry;
+            if(m >= 0) temp += a.charAt(m--) - '0';
+            if(n >= 0) temp += b.charAt(n--) - '0';
+            carry = temp / 2;//大于就是有进位
+            res.append(temp % 2);
         }
-        String str = String.valueOf(newArr);
-        builder = new StringBuilder(str); 
-        str = builder.reverse().toString();//反转回来
-        return str;
+        if(carry != 0) res.append(carry);
+        return res.reverse().toString();
     }
 }
