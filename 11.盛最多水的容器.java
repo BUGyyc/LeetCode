@@ -29,6 +29,10 @@
  * 
  */
 class Solution {
+    /**
+     * 双指针的方法，每次只移动最小的指针，直到指针相遇，
+     * 因为影响容器大小的因素除了长度，就剩高度了，最短的会是最终的取值高度
+     */
     public int maxArea(int[] height) {
         int f = 0;
         int e = height.length - 1;

@@ -22,6 +22,9 @@
  */
 class Solution {
     //TODO:
+    /**
+     * 同上一题类似，先排序，然后每个值遍历一下。首尾指针移动查找
+     */
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int minSum = nums[0] + nums[1] + nums[2];

@@ -29,6 +29,7 @@
  */
 class Solution {
     //TODO:
+    //回文串
     public String longestPalindrome(String s) {
         String longestPalindrome = "";
         char[] chars = s.toCharArray();
