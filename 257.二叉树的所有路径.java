@@ -31,17 +31,29 @@
  * 
  */
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
+
+    private List<String> list = new ArrayList<>();
+
     public List<String> binaryTreePaths(TreeNode root) {
-        
+        if (root != null)
+            getAllNode("", root);
+        return list;
+    }
+
+    private void getAllNode(String str, TreeNode root) {
+        if (root.left == null && root.right == null) {
+            list.add(str + root.val);
+            return;
+        }
+        if (root.left != null) {
+            getAllNode(str + root.val + "->", root.left);
+        }
+        if (root.right != null) {
+            getAllNode(str + root.val + "->", root.right);
+        }
     }
 }
-
