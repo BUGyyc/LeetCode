@@ -53,7 +53,9 @@
  * 
  */
 class Solution {
-
+    /**
+     * 用栈的特点来求解，最后栈为空，说明是正确的
+     */
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<Character>();
         for (int i = 0; i < s.length(); i++) {

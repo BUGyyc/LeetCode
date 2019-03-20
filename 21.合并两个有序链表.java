@@ -25,6 +25,9 @@
  * next; ListNode(int x) { val = x; } }
  */
 class Solution {
+    /**
+     * 链表是有序的，所以从头部开始比较节点，小的就移动
+     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null)
             return l2;

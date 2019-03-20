@@ -36,6 +36,7 @@ import java.util.Arrays;
  */
 class Solution {
     //TODO:
+    //类似三数之和，再加一层遍历，最后两个数字是首尾查找，注意要先排序
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> allList = new ArrayList<>();
         if (nums.length == 0)
