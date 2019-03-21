@@ -29,8 +29,17 @@
  * 
  */
 class Solution {
+    //TODO:
     public boolean canConstruct(String ransomNote, String magazine) {
-        
+        int[] counter = new int[128];
+        for(char c : magazine.toCharArray()){
+            counter[c]++;
+        }
+        for(char c : ransomNote.toCharArray()){
+            counter[c]--;
+            if(counter[c] < 0)return false;
+        }
+        return true;
     }
 }
 
