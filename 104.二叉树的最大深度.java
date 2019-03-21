@@ -39,8 +39,21 @@
  * }
  */
 class Solution {
+    //TODO:
+    private int max = 0;
     public int maxDepth(TreeNode root) {
-        
+        // maxDepFunc1(root.left,max+1);
+        // return max;
+        return root == null ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
+
+    // private void maxDepFunc1(TreeNode root,int level){
+    //     if(root == null){
+    //         max = Math.max(max,level);
+    //         return;
+    //     }
+    //     maxDepFunc1(root.left,level+1);
+    //     maxDepFunc1(root.right,level+1);
+    // }
 }
 
