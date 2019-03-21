@@ -39,6 +39,11 @@
  * 
  */
 class Solution {
+    /**
+     * 利用回文数的特点，前后各取一半
+     * x,newNum
+     * 有可能多一位，所以判断的时候要判断两种情况
+     */
     public boolean isPalindrome(int x) {
         if (x < 0 || x != 0 && x % 10 == 0) {// 小于0肯定不是,除了0之外，被10整除肯定也不是
             return false;
