@@ -26,6 +26,10 @@
  * 
  */
 class Solution {
+    /**
+     * 遍历累加，当累加的和小于等于0,说明前面累加的结果可能不符合，所以重置累加和
+     * 每次的累加和做比较取最大累加和
+     */
     public int maxSubArray(int[] nums) {
         int max = nums[0];
         int sum = 0;

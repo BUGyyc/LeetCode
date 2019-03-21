@@ -27,6 +27,9 @@
  * 
  */
 class Solution {
+    /**
+     * 取两个字符遍历，都从尾部开始遍历，进位也要算进去
+     */
     public String addBinary(String a, String b) {
         StringBuilder res = new StringBuilder();
         int carry = 0;

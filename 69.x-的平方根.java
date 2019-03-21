@@ -33,8 +33,25 @@
  * 
  */
 class Solution {
+    // TODO:
+    //取最大的开根号，从小到大遍历
     public int mySqrt(int x) {
-        
+        int i = 0;
+        int j = 46340;//int  最大的开根号
+        while (i < j) {
+            int t = (i + j) / 2;
+            if (x > t * t) {
+                i = t + 1;
+            } else {
+                j = t - 1;
+            }
+        }
+
+        if (i * i > x) {
+            i--;
+        } else if (x == (i + 1) * (i + 1)) {
+            i++;
+        }
+        return i;
     }
 }
-

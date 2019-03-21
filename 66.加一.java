@@ -34,6 +34,9 @@
  */
 class Solution {
     //TODO:
+    /**
+     * 反着遍历，有进位就加到前面
+     */
     public int[] plusOne(int[] digits) {
         int carry = 0;
         for (int i = digits.length - 1; i >= 0; i--) {

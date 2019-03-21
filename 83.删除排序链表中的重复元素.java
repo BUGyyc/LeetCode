@@ -38,7 +38,7 @@ class Solution {
             return head;
         }
         head.next = deleteDuplicates(head.next);
-        if(head.val == head.next.val) head = head.next;
+        if(head.val == head.next.val) head = head.next; //如果相等就取下一个节点
         return head;
     }
 }

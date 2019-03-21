@@ -25,6 +25,9 @@
  * 
  */
 class Solution {
+    /**
+     * 倒着遍历，记录两个索引，第一索引是首个字符，第二个索引是非字符，或者不存在第二个索引，单词直接结束
+     */
     public int lengthOfLastWord(String s) {
         StringBuilder sb = new StringBuilder(s);
         s = sb.reverse().toString();
