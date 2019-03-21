@@ -49,17 +49,36 @@
  * 
  */
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
+    /**
+     * 遍历每个节点值，如果不等就不再比较，
+     */
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        
+        return isSameFunc1(p, q);
     }
-}
 
+    private boolean isSameFunc1(TreeNode p, TreeNode q) {
+        if(p == null && q == null){
+            return true;
+        }   
+        if(p != null && q != null && p.val == q.val){
+            return isSameFunc1(p.left, q.left) && isSameFunc1(p.right, q.right);
+        }else{
+            return false;
+        }    
+    }
+
+
+    // if(p==null && q==null){
+    //     return true;
+    // }
+
+    // if(p!=null && q!=null && p.val==q.val  ){
+    //     return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+    // }else {
+    //     return false;
+    // }
+}
