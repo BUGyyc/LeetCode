@@ -36,25 +36,38 @@
  * 
  */
 class Solution {
-    //TODO:
+    // TODO:
     /**
      * 滑动窗口来比较
      */
     public int strStr(String haystack, String needle) {
-        if (haystack == null || needle == null || haystack.length() < needle.length()) {
-            return -1;
-        }
-        if ("".equals(needle)) {
-            return 0;
-        }
-        int i = 0;
-        while (i <= haystack.length()-needle.length()) {
-            if (isValid(haystack,needle,i)) {
-                return i;
+        //这个时间复杂度要高些
+        for (int i = 0;; i++) {
+            for (int j = 0;; j++) {
+                if (j == needle.length())
+                    return i;
+                if (i + j == haystack.length())
+                    return -1;
+                if (needle.charAt(j) != haystack.charAt(i + j))
+                    break;
             }
-            i++;
         }
-        return -1;
+
+        // if (haystack == null || needle == null || haystack.length() <
+        // needle.length()) {
+        // return -1;
+        // }
+        // if ("".equals(needle)) {
+        // return 0;
+        // }
+        // int i = 0;
+        // while (i <= haystack.length()-needle.length()) {
+        // if (isValid(haystack,needle,i)) {
+        // return i;
+        // }
+        // i++;
+        // }
+        // return -1;
     }
 
     private boolean isValid(String haystack, String needle, int start) {
