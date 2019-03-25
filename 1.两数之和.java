@@ -1,3 +1,7 @@
+import java.util.Arrays;
+
+import sun.tools.jar.resources.jar_sv;
+
 /*
  * @lc app=leetcode.cn id=1 lang=java
  *
@@ -25,25 +29,44 @@
  * 
  */
 class Solution {
-    /**
-     * target - x 目标差值
-     * 若存在，说明有解
-     * 关键在map.get(x)、map.put((target-x), i)
-     */
+
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer,Integer> map=new HashMap<>();
-        int[] arr=new int[2];
-        for(int i=0;i<nums.length;i++){
-            int x=nums[i];
-            if(map.get(x)!=null){//直接找 目标差值 （target-x）
-                arr[1]=i;
-                arr[0]=map.get(nums[i]);
+        return func1(nums, target);
+    }
+
+    /**
+     * target - x 目标差值 若存在，说明有解 关键在map.get(x)、map.put((target-x), i)
+     */
+    private int[] func1(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] arr = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            int x = nums[i];
+            if (map.get(x) != null) {// 直接找 目标差值 （target-x）
+                arr[1] = i;
+                arr[0] = map.get(nums[i]);
                 return arr;
-            }else{
-                map.put((target-x), i);//存索引
+            } else {
+                map.put((target - x), i);// 存索引
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 方法2： 遍历数组，看是否存在,效率不高
+     */
+    private int[] func2(int[] nums, int target) {
+        int[] arr = new int[2];
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    arr[0] = i;
+                    arr[1] = j;
+                    return arr;
+                }
             }
         }
         return null;
     }
 }
-
