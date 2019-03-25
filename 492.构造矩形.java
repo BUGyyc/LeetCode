@@ -43,7 +43,19 @@
  */
 class Solution {
     public int[] constructRectangle(int area) {
-        
+        int L=0;
+        int W=0;
+        int n = (int) Math.sqrt(area);//从开根号开始遍历求解
+        for(int i=n;i>0;i--){
+           if(area%i==0){
+               W=i;
+               L = area/i;
+               break;
+           }
+        }
+        if(L>W){return new int[]{L,W};}else {
+            return new int[]{W,L};
+        }
     }
 }
 

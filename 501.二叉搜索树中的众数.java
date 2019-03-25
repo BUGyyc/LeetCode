@@ -1,3 +1,4 @@
+
 /*
  * @lc app=leetcode.cn id=501 lang=java
  *
@@ -39,21 +40,29 @@
  * 
  */
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
     public int[] findMode(TreeNode root) {
         /**
          * 二叉排序树是有序的，利用这个特点，减少遍历次数
          */
+        if (root == null)
+            return new int[0];
         int last = 0;
+        int curNum = 0;
+        int max = 0;
+        List<Integer> list = new ArrayList<>();
+
+        return list.stream().mapToInt(o -> o).toArray();
+    }
+
+    private void func1(TreeNode root, List<Integer> list) {
+        if (root == null)
+            return;
+        func1(root.left,list);
         
+        func1(root.right,list);
     }
 }
-
