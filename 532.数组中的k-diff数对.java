@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*
  * @lc app=leetcode.cn id=532 lang=java
  *
@@ -50,10 +52,16 @@
  */
 class Solution {
     public int findPairs(int[] nums, int k) {
+        return func1(nums, k);
+    }
+
+    /**
+     * 和两数之和相似， 在Map中操作
+     */
+    private int func1(int[] nums, int k) {
         int len = nums.length;
         if (len < 2 || k < 0)
             return 0;
-
         int res = 0;
         Map<Integer, Integer> map = new HashMap<>();
         map.put(nums[0], 1);
@@ -69,7 +77,22 @@ class Solution {
             }
 
         }
-
         return res;
+    }
+
+    /**
+     * 排序，减少比较次数 从前往后找，
+     */
+    private int func2(int[] nums, int k) {
+        Arrays.sort(nums);
+        int num = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + k == nums[j]) {
+                    num++;
+                }
+            }
+        }
+        return num;
     }
 }

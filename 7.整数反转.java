@@ -43,7 +43,15 @@ class Solution {
 	 */
     //2^31-1=2147483647,-2^31=-2147483648
     public int reverse(int x) {
-        String s = String.valueOf(x);
+        return func1(x);
+	}
+
+	/**
+	 * 转成字符串，
+	 * 然后用try catch来尝试转整数，如果失败说明溢出
+	 */
+	private int func1(int x){
+		String s = String.valueOf(x);
 		char[] chars = s.toCharArray();
 		// 判断输入整数是正数还是负数。正数则flag=false。
 		boolean flag = chars[0] == '-' ? true : false;
@@ -53,7 +61,6 @@ class Solution {
 		for (int i = chars.length - 1; i >= end; i--) {
 			sb.append(chars[i]);
 		}
-
 		int result = 0;// 保存结果
 		try {
 			result = Integer.parseInt(sb.toString());
@@ -62,6 +69,6 @@ class Solution {
 		}
 		result = flag ? (-result) : result;
 		return result;
-    }
+	}
 }
 
