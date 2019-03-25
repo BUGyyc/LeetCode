@@ -34,7 +34,14 @@
  */
 class Solution {
     public int findLUSlength(String a, String b) {
-        
+        // 相等的情况是不符合的
+        return a.equals(b) ? -1 : Math.max(a.length(), b.length());
+    }
+
+    private int func1(String a, String b) {
+        /**
+         * 找到各自的子序列 然后比较最长
+         */
+        return 0;
     }
 }
-
