@@ -52,7 +52,7 @@ import java.util.Arrays;
  */
 class Solution {
     public int findPairs(int[] nums, int k) {
-        return func1(nums, k);
+        return func3(nums, k);
     }
 
     /**
@@ -95,4 +95,31 @@ class Solution {
     //     }
     //     return num;
     // }
+
+    private int func3(int[] nums,int k){
+        Arrays.sort(nums);
+        int len = nums.length;
+        if (len < 2) return 0;
+        int i = 0;
+        int j = 1;
+        int count = 0;
+        Set<Integer> temp = new HashSet<Integer>();
+        while (i < len && j < len){
+            if (i == j) j++;
+            else {
+                if (nums[j] > nums[i] + k) i++;
+                else if (nums[j] < nums[i] + k) j++;
+                else{
+                    // 避免出现[1,1,3,3,5]这种情况
+                    if (!temp.contains(nums[i] + nums[j])){
+                        temp.add(nums[i] + nums[j]);
+                        count++;
+                    }
+                    i++;
+                    j++;
+                }
+            }
+        }
+        return count;
+    }
 }

@@ -30,8 +30,20 @@
  * 
  */
 class Solution {
+    //TODO:
     public String reverseStr(String s, int k) {
-        
+        StringBuilder sb = new StringBuilder();
+        int count = s.length() / k;
+        for (int i = 0; i <= count; i++) {
+            if (i % 2 == 0) {
+                for (int j = Math.min((i + 1) * k, s.length()) - 1; j >= i * k; j--) {
+                    sb.append(s.charAt(j));
+                }
+            } else {
+                sb.append(s.substring(i * k, Math.min((i + 1) * k, s.length())));
+            }
+        }
+        return sb.toString();
     }
 }
 

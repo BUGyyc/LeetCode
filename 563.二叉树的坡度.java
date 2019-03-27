@@ -1,3 +1,5 @@
+import sun.security.krb5.internal.crypto.NullEType;
+
 /*
  * @lc app=leetcode.cn id=563 lang=java
  *
@@ -41,17 +43,60 @@
  * 
  */
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
-    public int findTilt(TreeNode root) {
-        
-    }
-}
+    //TODO:
+    private int sum1 = 0;
+    private int sum2 = 0;
 
+    public int findTilt(TreeNode root) {
+        return func2(root);
+    }
+
+    private int func1(TreeNode root) {
+        if (root == null)
+            return 0;
+        if (root.left != null)
+            getSum(root.left, 1);
+        if (root.right != null)
+            getSum(root.right, 2);
+        return Math.abs(sum1 - sum2);
+    }
+
+    private void getSum(TreeNode root, int type) {
+        if (root == null)
+            return;
+        if (type == 1) {
+            sum1 += root.val;
+        } else {
+            sum2 += root.val;
+        }
+        if (root.left != null)
+            getSum(root.left, type);
+        if (root.right != null)
+            getSum(root.right, type);
+    }
+
+    private int func2(TreeNode root){
+        ArrayList<Integer> tilt = new ArrayList();
+        sumNodes(root, tilt);
+        int sum =0;
+        for (Integer t: tilt) {
+            sum = sum + t;
+        }
+        return sum;
+    }
+
+    private int sumNodes(TreeNode root , List<Integer> tilt) {
+        if (root == null) {
+            return 0;
+        }
+        int left = sumNodes(root.left , tilt);
+        int right = sumNodes(root.right , tilt);
+        tilt.add(Math.abs(left -right));
+        return left + right + root.val;
+    }
+
+}
