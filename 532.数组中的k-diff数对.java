@@ -83,16 +83,16 @@ class Solution {
     /**
      * 排序，减少比较次数 从前往后找，
      */
-    private int func2(int[] nums, int k) {
-        Arrays.sort(nums);
-        int num = 0;
-        for (int i = 0; i < nums.length - 1; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] + k == nums[j]) {
-                    num++;
-                }
-            }
-        }
-        return num;
-    }
+    // private int func2(int[] nums, int k) {
+    //     Arrays.sort(nums);
+    //     int num = 0;
+    //     for (int i = 0; i < nums.length - 1; i++) {
+    //         for (int j = i + 1; j < nums.length; j++) {
+    //             if (nums[i] + k == nums[j]) {
+    //                 num++;
+    //             }
+    //         }
+    //     }
+    //     return num;
+    // }
 }

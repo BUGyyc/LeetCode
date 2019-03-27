@@ -53,7 +53,23 @@
  */
 class Solution {
     public String licenseKeyFormatting(String S, int K) {
-        
+        S = S.toUpperCase();
+        S = String.join("", S.split("-"));
+        char[] chars = S.trim().toCharArray();//转大写字符数组
+        int i = 0;
+        StringBuilder sb = new StringBuilder();
+        for(int n = chars.length-1;n>=0;n--){
+            if(chars[n] != '-'){
+                i++;
+                sb.append(chars[n]);
+                if(i == K){
+                    i=0;
+                    if(n!=0)
+                        sb.append('-');
+                }
+            }
+        }
+        return sb.reverse().toString();
     }
 }
 
