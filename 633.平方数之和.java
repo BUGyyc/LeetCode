@@ -33,7 +33,17 @@
  */
 class Solution {
     public boolean judgeSquareSum(int c) {
-        
+        int high = (int) Math.sqrt(c), low = 0, result;
+        while (low <= high) {
+            result = low * low + high * high;
+            if (result == c) {
+                return true;
+            } else if (result > c) {
+                high -= 1;
+            } else {
+                low += 1;
+            }
+        }
+        return false;
     }
 }
-

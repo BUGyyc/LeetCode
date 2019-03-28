@@ -34,17 +34,27 @@ import java.util.Arrays;
  */
 class Solution {
     public double findMaxAverage(int[] nums, int k) {
-        return func1(nums,k);
+        return func1(nums, k);
     }
 
     /**
-     * 最大和类似
+     * 移动窗口来统计
+     * 
      * @param nums
      * @param k
      * @return
      */
-    private double func1(int[] nums,int k){
-
+    private double func1(int[] nums, int k) {
+        int sum = 0;
+        double max = 0;
+        for (int i = 0; i < k; i++) {
+            sum += nums[i];
+        }
+        max = sum * 1.0 / k;
+        for (int i = 1; i < nums.length - k + 1; i++) {
+            sum = sum - nums[i - 1] + nums[i - 1 + k];
+            max = Math.max(max, sum * 1.0 / k);// 记录每一次的最大平均
+        }
+        return max;
     }
 }
-
