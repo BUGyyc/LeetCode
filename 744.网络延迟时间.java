@@ -60,8 +60,22 @@
  * 
  */
 class Solution {
+    //TODO:
     public char nextGreatestLetter(char[] letters, char target) {
-        
+        // if(target < letters[0]){
+        // return letters[0];
+        // }else if(target > letters[letters.length-1]){
+        // return letters[0];
+        // }else{
+
+        // }
+        for (int i = 0; i < letters.length - 1; i++) {
+            if (letters[i] > target)
+                return letters[i];
+        }
+        if (letters[letters.length - 1] <= target)
+            return letters[0];
+        else
+            return letters[letters.length - 1];
     }
 }
-

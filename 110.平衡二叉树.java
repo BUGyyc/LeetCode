@@ -57,8 +57,24 @@
  * }
  */
 class Solution {
+    /**
+     * 遍历节点，取做节点与右节点高度做比较
+     */
+    private boolean result = true;
     public boolean isBalanced(TreeNode root) {
-        
+        maxDep(root);
+        return result;
+    }
+
+    private int maxDep(TreeNode root){
+        if(root == null)
+            return 0;
+        int left = maxDep(root.left);
+        int right = maxDep(root.right);
+        if(Math.abs(left-right)>1){
+            result = false;
+        }
+        return Math.max(left,right)+1;
     }
 }
 

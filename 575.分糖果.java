@@ -43,8 +43,9 @@
  * 
  */
 class Solution {
+    //TODO:
     public int distributeCandies(int[] candies) {
-        
+        return (int)Math.min(Arrays.stream(candies).distinct().count(),candies.length/2);
     }
 }
 

@@ -49,8 +49,23 @@ class Employee {
 };
 */
 class Solution {
+    //TODO:
     public int getImportance(List<Employee> employees, int id) {
-        
+        Stack<Employee> stack = new Stack<>();
+        Map<Integer, Employee> map = new HashMap<>();
+        int count = 0;
+        for (Employee employee : employees) {
+            map.put(employee.id, employee);
+        }
+        stack.push(map.get(id));
+        Employee e = new Employee();
+        while (!stack.empty()) {
+            e = stack.pop();
+            count += e.importance;
+            for (int i : e.subordinates) {
+                stack.push(map.get(i));
+            }
+        }
+        return count;
     }
 }
-
