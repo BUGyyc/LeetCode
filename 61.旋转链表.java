@@ -45,5 +45,16 @@ class Solution {
     public ListNode rotateRight(ListNode head, int k) {
         
     }
+
+    /**
+     * 快慢双指针
+     * 两个指针间隔k
+     * @param head
+     * @param k
+     * @return
+     */
+    private ListNode func1(ListNode head,int k){
+
+    }
 }
 

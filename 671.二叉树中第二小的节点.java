@@ -1,3 +1,4 @@
+
 /*
  * @lc app=leetcode.cn id=671 lang=java
  *
@@ -44,17 +45,64 @@
  * 
  */
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
+    //TODO:
     public int findSecondMinimumValue(TreeNode root) {
-        
+        // return extracted(root);
+        if (root == null)
+            return -1;
+        int min = Integer.MAX_VALUE;
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root.left != null) {
+            queue.add(root.left);
+            queue.add(root.right);
+        } else
+            return -1;
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.remove();
+            if (node.val < min && node.val != root.val) {
+                min = node.val;
+            }
+            if (node.left != null) {
+                queue.add(node.left);
+                queue.add(node.right);
+            }
+        }
+        if (min == Integer.MAX_VALUE)
+            return -1;
+        else {
+            return min;
+        }
+    }
+
+    private int extracted(TreeNode root) {
+        if (root.left == null) {
+            return -1;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int min = root.val;
+        int min2 = Integer.MIN_VALUE;
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (node.left == null)
+                continue;
+            if (node.left.val > min && node.left.val < min2) {
+                min2 = node.left.val;
+            }
+            if (node.right.val > min && node.right.val < min2) {
+                min2 = node.right.val;
+            }
+            if (node.left.val >= min && node.left.val < min2) {
+                queue.add(node.left);
+            }
+            if (node.right.val >= min && node.right.val < min2) {
+                queue.add(node.right);
+            }
+        }
+        return min2 == Integer.MIN_VALUE ? -1 : min2;
     }
 }
-
