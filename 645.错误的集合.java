@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 /*
  * @lc app=leetcode.cn id=645 lang=java
@@ -34,38 +34,66 @@ import java.util.Arrays;
  * 
  */
 class Solution {
-    //TODO:
+    // TODO:
     public int[] findErrorNums(int[] nums) {
-        return extracted(nums);
+        return func2(nums);
     }
 
+    // /**
+    //  * 排序 对应索引来比较值
+    //  * 
+    //  * @param nums
+    //  * @return
+    //  */
+    // private int[] extracted(int[] nums) {
+    //     int[] newArr = new int[2];
+    //     Arrays.sort(nums);
+    //     int index = 0;// 记录出错的索引
+    //     for (int i = 0; i < nums.length; i++) {
+    //         if (nums[i] != i + 1) {
+    //             index = i;
+    //             break;
+    //         }
+    //     }
+    //     newArr[0] = nums[index];
+    //     if (index == 0) {
+    //         newArr[1] = 1;
+    //     } else if (index == nums.length - 1) {
+    //         newArr[1] = nums.length;
+    //     } else if (nums[index + 1] - nums[index] > 1) {
+    //         newArr[1] = nums[index + 1] - 1;
+    //     } else if (nums[index] - nums[index - 1] > 1) {
+    //         newArr[1] = nums[index - 1] + 1;
+    //     }
+    //     return newArr;
+    // }
+
     /**
-     * 排序
-     * 对应索引来比较值
+     * TODO:
      * @param nums
      * @return
      */
-    private int[] extracted(int[] nums) {
-        int[] newArr = new int[2];
-        Arrays.sort(nums);
-        int index = 0;//记录出错的索引
-        for(int i =0;i<nums.length;i++){
-            if(nums[i] != i+1){
-                index = i;
-                break;
+    private int[] func2(int[] nums) {
+        int[] newnum = new int[nums.length + 1];//多记录一位，因为有重复一位
+        int repeat = 0;
+        int loss = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (newnum[nums[i]] == 0) {//把出现1次的位置变成1
+                newnum[nums[i]] = 1;
+            } else {
+                newnum[nums[i]] = 2;//出现两次的位置变为2
             }
         }
-        newArr[0] = nums[index];
-        if(index == 0){   
-            newArr[1] = 1;
-        }else if(index == nums.length-1){
-            newArr[1] = nums.length;
-        }else if(nums[index+1] - nums[index] > 1){
-            newArr[1] = nums[index+1]-1;
-        }else if(nums[index] - nums[index-1] > 1){
-            newArr[1] = nums[index-1]+1;
+        for (int i = 1; i < newnum.length; i++) {
+            if (newnum[i] == 0) {//没出现的数字就是0
+                loss = i;
+            } else if (newnum[i] == 2) {//出现两次的数字就是2
+                repeat = i;
+            }
         }
-        return newArr;
+        int[] res = new int[2];
+        res[0] = repeat;
+        res[1] = loss;
+        return res;
     }
 }
-
