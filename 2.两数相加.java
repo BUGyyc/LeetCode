@@ -30,7 +30,6 @@
  * next; ListNode(int x) { val = x; } }
  */
 class Solution {
-    //TODO:
     //carry来计进位值。有进位则传递到下一个值
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if (l1 == null || l2 == null)
