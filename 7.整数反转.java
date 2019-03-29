@@ -39,18 +39,17 @@
  */
 class Solution {
 	/**
-	 * TODO:可以再优化
+	 * 
 	 */
-    //2^31-1=2147483647,-2^31=-2147483648
-    public int reverse(int x) {
-        return func1(x);
+	// 2^31-1=2147483647,-2^31=-2147483648
+	public int reverse(int x) {
+		return func2(x);
 	}
 
 	/**
-	 * 转成字符串，
-	 * 然后用try catch来尝试转整数，如果失败说明溢出
+	 * 转成字符串， 然后用try catch来尝试转整数，如果失败说明溢出
 	 */
-	private int func1(int x){
+	private int func1(int x) {
 		String s = String.valueOf(x);
 		char[] chars = s.toCharArray();
 		// 判断输入整数是正数还是负数。正数则flag=false。
@@ -70,5 +69,22 @@ class Solution {
 		result = flag ? (-result) : result;
 		return result;
 	}
-}
 
+	/**
+	 * 简化代码
+	 * @param x
+	 * @return
+	 */
+	private int func2(int x) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(Math.abs(x));
+		int result = 0;
+		try {
+			result = Integer.parseInt(sb.reverse().toString());
+		} catch (NumberFormatException e) {
+			return 0;
+		}
+		return x < 0 ? -1 * result : result;
+
+	}
+}

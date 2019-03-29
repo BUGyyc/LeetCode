@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import sun.tools.jar.resources.jar_sv;
 
@@ -65,6 +67,21 @@ class Solution {
                     arr[1] = j;
                     return arr;
                 }
+            }
+        }
+        return null;
+    }
+
+    private int[] func3(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] newArr = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            if(map.get(nums[i])!=null){//如果目标值存在
+                newArr[1] = i;
+                newArr[0] = map.get(nums[i]);
+                return newArr;
+            }else{
+                map.put(target-nums[i], i);//target-nums[i]就是下一个目标值，
             }
         }
         return null;
