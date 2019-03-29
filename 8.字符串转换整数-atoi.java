@@ -68,39 +68,57 @@
  */
 class Solution {
     public int myAtoi(String str) {
+        return extracted(str);
+    }
+
+    // private int func1(String str){
+    //     StringBuilder sb = new StringBuilder();
+    //     for(int i = 0;i<str.length();i++){
+    //         if((str.charAt(i)>'0' && str.charAt(i) < '9' )|| str.charAt(i) == '-'){
+    //             sb.append(str.charAt(i));
+    //         }
+    //     }
+
+    // }
+
+    private int extracted(String str) {
         int result = 0;
         str = str.trim();
         char[] strs = str.toCharArray();
         boolean isNegative = false;
-        for(int i=0; i<str.length(); i++){
-            if(i==0){
-                if(strs[i] =='-') {
+        for (int i = 0; i < str.length(); i++) {
+            if (i == 0) {
+                if (strs[i] == '-') {
                     isNegative = true;
-                }else if(strs[i]>='0' && strs[i]<='9'){
-                    result = result*10 + (strs[i] -'0');
-                }else if(strs[i] == '+'){
+                } else if (strs[i] >= '0' && strs[i] <= '9') {
+                    result = result * 10 + (strs[i] - '0');
+                } else if (strs[i] == '+') {
                     continue;
-                }else{
+                } else {
                     break;
                 }
-            }else{
-                if(strs[i]>='0' && strs[i]<='9'){
-                    if ((!isNegative) && (result > Integer.MAX_VALUE/10 || (result == Integer.MAX_VALUE / 10 && (strs[i] -'0' > 7)))){
+            } else {
+                if (strs[i] >= '0' && strs[i] <= '9') {
+                    if ((!isNegative) && (result > Integer.MAX_VALUE / 10
+                            || (result == Integer.MAX_VALUE / 10 && (strs[i] - '0' > 7)))) {
                         return Integer.MAX_VALUE;
                     }
-                    if(isNegative && (-1 * result < Integer.MIN_VALUE/10 || (-1*result == Integer.MIN_VALUE / 10 && (strs[i] -'0' > 8)))){
+                    if (isNegative && (-1 * result < Integer.MIN_VALUE / 10
+                            || (-1 * result == Integer.MIN_VALUE / 10 && (strs[i] - '0' > 8)))) {
                         return Integer.MIN_VALUE;
                     }
-                    result = result*10 + (strs[i] -'0');
-                }else{
+                    result = result * 10 + (strs[i] - '0');
+                } else {
                     break;
                 }
             }
         }
-        if(isNegative){
-            return -1*result;
+        if (isNegative) {
+            return -1 * result;
         }
         return result;
     }
+
+    
 }
 

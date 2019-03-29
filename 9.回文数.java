@@ -40,11 +40,13 @@
  */
 class Solution {
     /**
-     * 利用回文数的特点，前后各取一半
-     * x,newNum
-     * 有可能多一位，所以判断的时候要判断两种情况
+     * 利用回文数的特点，前后各取一半 x,newNum 有可能多一位，所以判断的时候要判断两种情况
      */
     public boolean isPalindrome(int x) {
+        return func1(x);
+    }
+
+    private boolean extracted(int x) {
         if (x < 0 || x != 0 && x % 10 == 0) {// 小于0肯定不是,除了0之外，被10整除肯定也不是
             return false;
         }
@@ -54,5 +56,16 @@ class Solution {
             x = x / 10;
         }
         return x == newNum || x == newNum / 10;
+    }
+
+    private boolean func1(int x) {
+        if (x < 0 || x != 0 && x % 10 == 0)
+            return false;
+        int num = 0;
+        while (num < x) {
+            num = num * 10 + x % 10;
+            x /= 10;
+        }
+        return num == x || num / 10 == x;
     }
 }

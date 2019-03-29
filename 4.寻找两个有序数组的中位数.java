@@ -35,7 +35,13 @@
  * 
  */
 class Solution {
-    //TODO:
+    /**
+     * 重新组合数组
+     * 然后拍序
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int[] merge = new int[nums1.length + nums2.length];
         System.arraycopy(nums1, 0, merge, 0, nums1.length);
