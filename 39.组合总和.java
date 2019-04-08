@@ -44,13 +44,17 @@
  * 
  */
 class Solution {
-    //TODO:
+    // TODO:
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> listAll=new ArrayList<List<Integer>>();
-        List<Integer> list=new ArrayList<Integer>();
-        //排序
+        return extracted(candidates, target);
+    }
+
+    private List<List<Integer>> extracted(int[] candidates, int target) {
+        List<List<Integer>> listAll = new ArrayList<List<Integer>>();
+        List<Integer> list = new ArrayList<Integer>();
+        // 排序
         Arrays.sort(candidates);
-        find(listAll,list,candidates,target,0);
+        find(listAll, list, candidates, target, 0);
         return listAll;
     }
 

@@ -71,7 +71,6 @@
  * 
  */
 class Solution {
-    //TODO:
     public boolean isValidSudoku(char[][] board) {
         // 记录某行，某位数字是否已经被摆放
         boolean[][] row = new boolean[9][10];
