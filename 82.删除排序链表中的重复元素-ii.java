@@ -26,16 +26,42 @@
  * 
  */
 /**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+ * Definition for singly-linked list. public class ListNode { int val; ListNode
+ * next; ListNode(int x) { val = x; } }
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        
+        // return extracted(head);
+        ListNode dummy = new ListNode(0), fast = head, slow = dummy;
+        slow.next = fast;
+        while (fast != null) {
+            while (fast.next != null && fast.val == fast.next.val) {
+                fast = fast.next; // while loop to find the last node of the dups.
+            }
+            if (slow.next != fast) { // duplicates detected.
+                slow.next = fast.next; // remove the dups.
+                fast = slow.next; // reposition the fast pointer.
+            } else { // no dup, move down both pointer.
+                slow = slow.next;
+                fast = fast.next;
+            }
+
+        }
+        return dummy.next;
+    }
+
+    private ListNode extracted(ListNode head) {
+        if (head == null)
+            return head;
+        ListNode temp = head;
+        ListNode cur = temp;
+        head = head.next;
+        while (head != null) {
+            if (head.val != cur.val) {
+                cur.next = new ListNode(head.val);
+            }
+            head = head.next;
+        }
+        return temp;
     }
 }
-

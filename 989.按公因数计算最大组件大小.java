@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * @lc app=leetcode.cn id=989 lang=java
  *
@@ -62,7 +65,17 @@
  */
 class Solution {
     public List<Integer> addToArrayForm(int[] A, int K) {
-        
+        List<Integer> list = new ArrayList();
+        int sum = 0, carry = K;
+        for (int i = A.length - 1; i >= 0; i--) {
+            sum += A[i] + carry;
+            list.add(sum % 10);
+            carry = sum / 10;
+        }
+        while (carry > 0) {
+            list.add(carry % 10);
+            carry /= 10;
+        }
+        return list;
     }
 }
-

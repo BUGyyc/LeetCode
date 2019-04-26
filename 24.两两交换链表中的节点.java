@@ -41,37 +41,6 @@ class Solution {
         head.next = swapPairs(next.next);
         next.next = head;
         return next;
-        // ListNode jList = new ListNode(-1);//奇
-        // ListNode jHead = jList;
-        // ListNode oList = new ListNode(-1);//偶
-        // ListNode oHead = oList;
-        // ListNode newHead = new ListNode(-1);
-        // ListNode cur = head;
-        // int i =1;
-        // while(cur!=null){
-        //     if(i%2 == 0){
-        //         oList.next = new ListNode(cur.val);
-        //         oList = oList.next;
-        //     }else{
-        //         jList.next = new ListNode(cur.val);
-        //         jList = jList.next;
-        //     }
-        //     cur = cur.next;
-        //     i++;
-        // }
-        // i = 1;
-        // jHead = jHead.next;
-        // oHead = oHead.next;
-        // cur = newHead;
-        // while(jHead!=null || oHead!=null){
-        //     if(i%2==0){
-        //         newHead.next = new ListNode(jHead.val);
-        //     }else{
-        //         newHead.next = new ListNode(oHead.val);
-        //     }
-        //     i++;
-        // }
-        // return cur.next;
     }
 }
 
