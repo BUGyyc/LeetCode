@@ -38,6 +38,10 @@ class Solution {
      * 快慢指针找到要删除的节点，然后删除
      */
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        return extracted(head, n);
+    }
+
+    private ListNode extracted(ListNode head, int n) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode fast = dummy;

@@ -31,7 +31,6 @@ import java.util.List;
  * 
  */
 class Solution {
-    //TODO:
     //将每个遍历作为第一个值比较，另外两个值用首尾两个指针取，前提是先给数组排序
     public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
