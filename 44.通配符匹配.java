@@ -70,8 +70,53 @@
  * 
  */
 class Solution {
+
+    /**
+     * 遍历字符串p,去比较s
+     * 
+     * @param s
+     * @param p
+     * @return
+     */
     public boolean isMatch(String s, String p) {
-        
+        return extracted(s, p);
+    }
+
+    //FIXME:
+    private boolean extracted(String s, String p) {
+        if (p.length() == 0 && s.length() != 0)
+            return false;
+        if (p.length() > s.length())
+            return false;
+        if (p.length() == 0 && s.length() == 0)
+            return true;
+        int j = 0;
+        int len = s.length() - 1;
+        for (int i = 0; i < p.length(); i++) {
+            char c = p.charAt(i);
+            if (c == '*') {
+                if (i == p.length() - 1) {// 最后一个
+
+                } else {
+                    char t = p.charAt(i + 1);
+                    int index = s.indexOf(t + "");
+                    if (index >= 0) {
+                        j = index;// j
+                    } else {
+                        return false;
+                    }
+                }
+            } else if (c == '?') {
+                j++;
+            } else {
+                if (c == s.charAt(j)) {
+                    j++;
+                } else {
+                    return false;
+                }
+            }
+            s = s.substring(j, len);
+        }
+        return s.length() <= 0;
     }
 }
-
