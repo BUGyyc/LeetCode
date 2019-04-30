@@ -4,8 +4,20 @@
  * [1018] 三角形的最大周长
  */
 class Solution {
-    // FIXME:会溢出
+
     public List<Boolean> prefixesDivBy5(int[] A) {
+        // return extracted(A);
+        List<Boolean> ans = new ArrayList<Boolean>();
+        int num = 0;
+        for (int a : A) {
+            num = (num * 2 + a) % 5;
+            ans.add(num == 0);
+        }
+        return ans;
+    }
+
+    // FIXME:会溢出
+    private List<Boolean> extracted(int[] A) {
         List<Boolean> list = new ArrayList<>();
         double sum = 0;
         for (int i = 0; i < A.length; i++) {
