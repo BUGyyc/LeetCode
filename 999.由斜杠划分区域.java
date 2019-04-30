@@ -66,7 +66,54 @@
  */
 class Solution {
     public int numRookCaptures(char[][] board) {
-        
+        int x = -1, y = -1;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (board[i][j] == 'R') {
+                    x = i;
+                    y = j;
+                }
+            }
+        }
+        if (x == -1) {
+            return 0;
+        }
+        int num = 0;
+        for (int i = x - 1; i >= 0; i--) {
+            if (board[i][y] == 'B') {// 碰到象，直接中断
+                break;
+            } else if (board[i][y] == 'p') {
+                num++;
+                break;
+            }
+        }
+
+        for (int i = x + 1; i < 8; i++) {
+            if (board[i][y] == 'B') {// 碰到象，直接中断
+                break;
+            } else if (board[i][y] == 'p') {
+                num++;
+                break;
+            }
+        }
+
+        for (int i = y - 1; i >= 0; i--) {
+            if (board[x][i] == 'B') {// 碰到象，直接中断
+                break;
+            } else if (board[x][i] == 'p') {
+                num++;
+                break;
+            }
+        }
+
+        for (int i = y + 1; i < 8; i++) {
+            if (board[x][i] == 'B') {// 碰到象，直接中断
+                break;
+            } else if (board[x][i] == 'p') {
+                num++;
+                break;
+            }
+        }
+        return num;
     }
 }
-
