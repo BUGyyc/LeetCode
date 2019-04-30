@@ -65,15 +65,16 @@ import java.util.List;
  */
 class Solution {
     public List<Integer> addToArrayForm(int[] A, int K) {
-        List<Integer> list = new ArrayList();
+        LinkedList<Integer> list = new LinkedList<>();
+        // List<Integer> list = new ArrayList();
         int sum = 0, carry = K;
         for (int i = A.length - 1; i >= 0; i--) {
-            sum += A[i] + carry;
-            list.add(sum % 10);
+            sum = A[i] + carry;
+            list.addFirst(sum % 10);
             carry = sum / 10;
         }
         while (carry > 0) {
-            list.add(carry % 10);
+            list.addFirst(carry % 10);
             carry /= 10;
         }
         return list;
