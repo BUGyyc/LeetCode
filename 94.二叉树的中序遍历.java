@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * @lc app=leetcode.cn id=94 lang=java
  *
@@ -28,17 +31,24 @@
  * 
  */
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 class Solution {
+    private List<Integer> list = new ArrayList<>();
+
     public List<Integer> inorderTraversal(TreeNode root) {
-        
+        inorderPrint(root);
+        return list;
+    }
+
+    private void inorderPrint(TreeNode root) {
+        if (root != null) {
+            if (root.left != null)
+                inorderPrint(root.left);
+            list.add(root.val);
+            if (root.right != null)
+                inorderPrint(root.right);
+        }
     }
 }
-
