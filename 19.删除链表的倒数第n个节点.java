@@ -3,13 +3,6 @@
  *
  * [19] 删除链表的倒数第N个节点
  *
- * https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/description/
- *
- * algorithms
- * Medium (32.49%)
- * Total Accepted:    33.9K
- * Total Submissions: 103.8K
- * Testcase Example:  '[1,2,3,4,5]\n2'
  *
  * 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
  * 

@@ -31,8 +31,20 @@
  * 
  */
 class Solution {
+    // 贪心算法
     public int jump(int[] nums) {
-        
+        // 消耗的步子
+        int cost = 0;
+        int end = 0;
+        // 局部最大解
+        int max = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            max = Math.max(max, i + nums[i]);
+            if (i == end) {
+                cost++;
+                end = max;
+            }
+        }
+        return cost;
     }
 }
-

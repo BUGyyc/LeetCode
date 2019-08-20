@@ -1,3 +1,5 @@
+import java.util.List;
+
 /*
  * @lc app=leetcode.cn id=39 lang=java
  *
@@ -44,9 +46,27 @@
  * 
  */
 class Solution {
-    // TODO:
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        return extracted(candidates, target);
+        List<List<Integer>> result = new ArrayList<>();
+        logic(result, new ArrayList<Integer>(), candidates, 0, target);
+        return result;
+    }
+
+    private void logic(List<List<Integer>> result, ArrayList<Integer> temp, int[] candidates, int sum, int target) {
+        if (sum == target) {
+            result.add(temp);
+            return;
+        }
+
+        for (int i = 0; i < candidates.length; i++) {
+            if (sum + candidates[i] > target)
+                continue;
+            sum += candidates[i];
+            temp.add(candidates[i]);
+            logic(result, temp, candidates, sum, target);
+            temp.remove(temp.size() - 1);
+            sum -= candidates[i];
+        }
     }
 
     private List<List<Integer>> extracted(int[] candidates, int target) {
@@ -58,20 +78,20 @@ class Solution {
         return listAll;
     }
 
-    public void find(List<List<Integer>> listAll,List<Integer> tmp,int[] candidates, int target,int num){
-        //递归的终点
-        if(target==0){
+    public void find(List<List<Integer>> listAll, List<Integer> tmp, int[] candidates, int target, int num) {
+        // 递归的终点
+        if (target == 0) {
             listAll.add(tmp);
             return;
-        } 
-        if(target<candidates[0]) return;
-        for(int i=num;i<candidates.length&&candidates[i]<=target;i++){
-            //深拷贝
-            List<Integer> list=new ArrayList<>(tmp);
+        }
+        if (target < candidates[0])
+            return;
+        for (int i = num; i < candidates.length && candidates[i] <= target; i++) {
+            // 深拷贝
+            List<Integer> list = new ArrayList<>(tmp);
             list.add(candidates[i]);
-            //递归运算，将i传递至下一次运算是为了避免结果重复。
-            find(listAll,list,candidates,target-candidates[i],i);
-        }   
-    } 
+            // 递归运算，将i传递至下一次运算是为了避免结果重复。
+            find(listAll, list, candidates, target - candidates[i], i);
+        }
+    }
 }
-

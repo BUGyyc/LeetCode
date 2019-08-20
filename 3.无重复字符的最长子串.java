@@ -4,13 +4,6 @@
  * [3] 无重复字符的最长子串
  *
  * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/description/
- *
- * algorithms
- * Medium (28.42%)
- * Total Accepted:    92.2K
- * Total Submissions: 321.8K
- * Testcase Example:  '"abcabcbb"'
- *
  * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
  * 
  * 示例 1:

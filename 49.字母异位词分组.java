@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
 /*
  * @lc app=leetcode.cn id=49 lang=java
  *
@@ -33,7 +36,20 @@
  */
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        
+        if (strs == null || strs.length == 0) {
+            return new ArrayList<List<String>>();
+        }
+        // 创建一个Map
+        Map<String, List<String>> map = new HashMap<String, List<String>>();
+        for (String s : strs) {
+            char[] cs = s.toCharArray();
+            Arrays.sort(cs);
+            String value = String.valueOf(cs);
+            // 不包含这个字母
+            if (!map.containsKey(value))
+                map.put(value, new ArrayList<String>());
+            map.get(value).add(s);
+        }
+        return new ArrayList<List<String>>(map.values());
     }
 }
-

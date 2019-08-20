@@ -3,13 +3,6 @@
  *
  * [24] 两两交换链表中的节点
  *
- * https://leetcode-cn.com/problems/swap-nodes-in-pairs/description/
- *
- * algorithms
- * Medium (57.73%)
- * Total Accepted:    15.6K
- * Total Submissions: 26.9K
- * Testcase Example:  '[1,2,3,4]'
  *
  * 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
  * 

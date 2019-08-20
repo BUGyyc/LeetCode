@@ -1,15 +1,6 @@
+
 /*
- * @lc app=leetcode.cn id=77 lang=java
- *
  * [77] 组合
- *
- * https://leetcode-cn.com/problems/combinations/description/
- *
- * algorithms
- * Medium (65.72%)
- * Total Accepted:    7.8K
- * Total Submissions: 11.8K
- * Testcase Example:  '4\n2'
  *
  * 给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
  * 
@@ -28,8 +19,29 @@
  * 
  */
 class Solution {
+    //LinkedList防止重复
+    List<List<Integer>> result = new LinkedList();
+    int n;
+    int k;
     public List<List<Integer>> combine(int n, int k) {
-        
+        this.n = n;
+        this.k = k;
+        func(new LinkedList<Integer>(), 1);
+        return result;
+    }
+
+    private void func(LinkedList<Integer> list, int first) {
+        if (list.size() == this.k) {
+            //满足条件
+            result.add(new LinkedList(list));
+            return;
+        }
+
+        for (int i = first; i < n + 1; i++) {
+            list.add(i);
+            func(list, i + 1);
+            //回溯
+            list.removeLast();
+        }
     }
 }
-

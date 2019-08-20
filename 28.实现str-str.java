@@ -3,14 +3,6 @@
  *
  * [28] 实现strStr()
  *
- * https://leetcode-cn.com/problems/implement-strstr/description/
- *
- * algorithms
- * Easy (37.88%)
- * Total Accepted:    41.6K
- * Total Submissions: 109.7K
- * Testcase Example:  '"hello"\n"ll"'
- *
  * 实现 strStr() 函数。
  * 
  * 给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置

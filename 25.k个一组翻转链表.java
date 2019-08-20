@@ -3,13 +3,6 @@
  *
  * [25] k个一组翻转链表
  *
- * https://leetcode-cn.com/problems/reverse-nodes-in-k-group/description/
- *
- * algorithms
- * Hard (49.51%)
- * Total Accepted:    7.8K
- * Total Submissions: 15.7K
- * Testcase Example:  '[1,2,3,4,5]\n2'
  *
  * 给出一个链表，每 k 个节点一组进行翻转，并返回翻转后的链表。
  * 

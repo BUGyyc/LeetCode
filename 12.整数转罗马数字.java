@@ -3,14 +3,6 @@
  *
  * [12] 整数转罗马数字
  *
- * https://leetcode-cn.com/problems/integer-to-roman/description/
- *
- * algorithms
- * Medium (57.93%)
- * Total Accepted:    17.9K
- * Total Submissions: 30.7K
- * Testcase Example:  '3'
- *
  * 罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。
  * 
  * 字符          数值

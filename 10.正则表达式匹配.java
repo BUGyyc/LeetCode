@@ -3,14 +3,6 @@
  *
  * [10] 正则表达式匹配
  *
- * https://leetcode-cn.com/problems/regular-expression-matching/description/
- *
- * algorithms
- * Hard (21.29%)
- * Total Accepted:    11.1K
- * Total Submissions: 51.6K
- * Testcase Example:  '"aa"\n"a"'
- *
  * 给定一个字符串 (s) 和一个字符模式 (p)。实现支持 '.' 和 '*' 的正则表达式匹配。
  * 
  * '.' 匹配任意单个字符。

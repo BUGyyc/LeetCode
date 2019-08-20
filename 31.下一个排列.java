@@ -24,8 +24,40 @@
  * 
  */
 class Solution {
-    //TODO:
+    // TODO:
     public void nextPermutation(int[] nums) {
+        // extracted(nums);
+        logic(nums);
+    }
+
+    private void logic(int[] nums) {
+        int len = nums.length;
+        boolean hasBreak = false;
+        int index = 0;
+        for (int i = len - 1; i >= 1; i--) {
+            if (nums[i] > nums[i - 1]) {
+                hasBreak = true;
+                index = i - 1;
+                break;
+            }
+        }
+
+        if (hasBreak == false)
+            return;
+        int target = nums[index];
+        int num = 0;
+        for (int i = index; i < len; i++) {
+            if (target > nums[i]) {
+                num = i - 1;
+                break;
+            }
+        }
+        int temp = target;
+        nums[index] = nums[num];
+        nums[num] = temp;
+    }
+
+    private void extracted(int[] nums) {
         int i = nums.length - 2;
         while (i >= 0 && nums[i + 1] <= nums[i]) {
             i--;

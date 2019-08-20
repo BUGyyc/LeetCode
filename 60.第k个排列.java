@@ -1,3 +1,5 @@
+
+
 /*
  * @lc app=leetcode.cn id=60 lang=java
  *
@@ -48,7 +50,42 @@
  */
 class Solution {
     public String getPermutation(int n, int k) {
-        
+        int[] arr = new int[n];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i + 1;
+        }
+
+        List<Integer> res = new ArrayList<>();
+        // visited标记这个位置是否使用过
+        int[] visited = new int[arr.length];
+        String temp = "";
+        backtrack(res, arr, temp, visited);
+
+        int[] nums = new int[res.size()];
+        Arrays.sort(nums);
+
+        return nums[nums.length - k];
+    }
+
+    private void backtrack(List<Integer> res, int[] nums, String tmp, int[] visited) {
+        // 放满后
+        if (tmp.length() == nums.length) {
+            res.add(Integer.parseInt(tmp));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            // 使用过的直接跳过
+            if (visited[i] == 1)
+                continue;
+            // 标记使用过
+            visited[i] = 1;
+            // 放入
+            tmp += "" + (nums[i]);
+            backtrack(res, nums, tmp, visited);
+            // 重置标志位
+            visited[i] = 0;
+            // 移除
+            tmp.remove(tmp.size() - 1);
+        }
     }
 }
-

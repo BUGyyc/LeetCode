@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
  * @lc app=leetcode.cn id=54 lang=java
  *
@@ -38,7 +40,39 @@
  */
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        
-    }
-}
+        // 最大行
+        int rowMax = matrix.length;
+        // 最大列
+        int colMax = matrix[0].length;
+        List<Integer> list = new ArrayList<>();
 
+        printRow(matrix, 0, list, rowMax, colMax, true);
+    }
+
+    // // 输出行
+    // private void printRow(int[][] matrix, int curr, List<Integer> list, int rowMax, int colMax, boolean isAdd) {
+    //     if (isAdd) {
+    //         for (int i = 0; i < colMax; i++) {
+    //             list.add(matrix[curr][i]);
+    //         }
+    //     } else {
+    //         for (int i = colMax; i >= 0; i--) {
+    //             list.add(matrix[curr][i]);
+    //         }
+    //     }
+    //     rowMax
+    //     printCol(matrix,colMax-1,list,)
+    // }
+
+    // private void printCol(int[][] matrix, int curr, List<Integer> list, int rowMax, int colMax, boolean isAdd) {
+    //     if (isAdd) {
+    //         for (int i = 0; i < colMax; i++) {
+    //             list.add(matrix[i][curr]);
+    //         }
+    //     } else {
+    //         for (int i = colMax; i >= 0; i--) {
+    //             list.add(matrix[i][curr]);
+    //         }
+    //     }
+    // }
+}
